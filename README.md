@@ -15,6 +15,12 @@ bash verify.sh
 
 On the baseline, three software detection checks fail. After the patch all nine checks pass, including the existing book import fixture. The Node test supplies a file reader and item completion hook and uses Zotero's own field converter. It covers detection and imported metadata. Desktop menus, clipboard integration and live identifier services are outside its scope.
 
+To test automatic translator selection through Zotero's translation server, run
+`bash verify.sh --server`. Its own HTTP import suite posts each embedded fixture,
+checks the selected translator ID, and compares the returned item metadata.
+With the original detector the software request returns 500 and the book request
+succeeds. With the patch both return 200. This check runs locally without a Zotero account.
+
 The patch is prepared for upstream review. No pull request has been submitted. The separate arXiv lead overlaps [an open metadata issue](https://github.com/zotero/translators/issues/3565); this patch affects CSL JSON only.
 
 The translator carries Simon Kornblith and Sebastian Karcher's copyright. The patch and reproduction are available under [AGPL-3.0-or-later](LICENSE).

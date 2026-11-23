@@ -11,3 +11,5 @@ jobs:
         with:
           node-version: '22'
       - run: bash verify.sh
+      - name: Run Zotero translation-server import tests
+        run: bash verify.sh --server
